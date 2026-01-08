@@ -8,11 +8,12 @@ export function GenerateButton() {
   const startGeneration = useBackgroundStore((s) => s.startGeneration)
 
   const isOverLimit = prompt.length > MAX_PROMPT_CHARS
+  const isEmpty = prompt.trim().length === 0
 
   return (
     <Button
       onClick={startGeneration}
-      disabled={isGenerating || isOverLimit}
+      disabled={isGenerating || isOverLimit || isEmpty}
       className="w-full h-12 bg-neutral-900 hover:bg-neutral-800 text-white gap-[8px] rounded-[100px]"
     >
       <img src={generationIcon} alt="" className="w-4 h-4" />
